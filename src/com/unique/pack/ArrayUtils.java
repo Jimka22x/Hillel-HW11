@@ -60,8 +60,8 @@ public class ArrayUtils {
     public static void swapColumns(int[][] matrix, int columA, int columB) {
         int columALength = 0;
         int columBLength = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
+        for (int[] ints : matrix) {
+            for (int j = 0; j < ints.length; j++) {
                 if (j == Math.min(columA, columB)) {
                     columALength++;
                 }
@@ -82,9 +82,9 @@ public class ArrayUtils {
 
     private static boolean swapColumnsPossibility(int[][] matrix, int columA, int columB, int columALength, int columBLength) {
         int maxRowLength = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            if (maxRowLength < matrix[i].length) {
-                maxRowLength = matrix[i].length - 1;
+        for (int[] ints : matrix) {
+            if (maxRowLength < ints.length) {
+                maxRowLength = ints.length - 1;
             }
         }
         if (columA < 0 || columB < 0 || maxRowLength < columA || maxRowLength < columB) {
@@ -172,14 +172,14 @@ public class ArrayUtils {
 
     public static int[] toArray(int[][] matrix) {
         int arrayLength = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            arrayLength += matrix[i].length;
+        for (int[] ints : matrix) {
+            arrayLength += ints.length;
         }
         int[] array = new int[arrayLength];
         int pointer = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                array[pointer] = matrix[i][j];
+        for (int[] matrixFirstIndex : matrix) {
+            for (int matrixSecondIndex : matrixFirstIndex) {
+                array[pointer] = matrixSecondIndex;
                 pointer++;
             }
         }
@@ -188,10 +188,10 @@ public class ArrayUtils {
 
     public static int max(int[][] matrix) {
         int max = matrix[0][0];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] > max) {
-                    max = matrix[i][j];
+        for (int[] matrixFirstIndex : matrix) {
+            for (int matrixSecondIndex : matrixFirstIndex) {
+                if (matrixSecondIndex > max) {
+                    max = matrixSecondIndex;
                 }
             }
         }
