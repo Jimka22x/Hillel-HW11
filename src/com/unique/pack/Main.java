@@ -60,10 +60,10 @@ public class Main {
             String answer = scanner.nextLine();
             if (answer.equalsIgnoreCase("S")) {
                 System.out.println("Symmetrical matrix was created.");
-                return ArrayUtils.createMatrix(3, 5);
+                return MatrixFactory.createMatrix(3, 5);
             } else if (answer.equalsIgnoreCase("C")) {
                 System.out.println("Custom matrix was created.");
-                return ArrayUtils.createCustomMatrix();
+                return MatrixFactory.createCustomMatrix();
             } else {
                 System.out.print("Unknown answer. Please repeat: ");
             }

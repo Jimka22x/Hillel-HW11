@@ -1,45 +1,20 @@
 package com.unique.pack;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class ArrayUtils {
 
-    private static final Random RANDOM = new Random();
-    private static final String ERROR_01 = "Impossible to complete swap! Selected items are out of the matrix." + "\nNothing has changed!";
+    private static final String ERROR_01 = "Impossible to complete swap! Selected items are out of the matrix." +
+            "\nNothing has changed!";
     private static final String ERROR_02 = "Cant complete swap due to the same target location! Nothing has changed.";
-    private static final String ERROR_03 = "Impossible to correctly swap items due to the different length of places " + "they locate on!\nNothing has changed!";
+    private static final String ERROR_03 = "Impossible to correctly swap items due to the different length of places "
+            + "they locate on!\nNothing has changed!";
     private static final String ASK_PERMISSION = "Do you want to force a swap? (Y/N) ";
     private static final String USER_YES_ANSWER = "Y";
     private static final String USER_NO_ANSWER = "N";
     private static final String PERMISSION_ERROR = "Unknown command! Do you want to force a swap? (Y/N) ";
     private static final String PERMISSION_RECEIVED = "Permission received. Selected items were swapped.";
     private static final String PERMISSION_DENIED = "Swap permission denied by user. Nothing has changed!";
-
-    public static int[][] createMatrix(int rows, int columns) {
-        int[][] matrix = new int[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                matrix[i][j] = RANDOM.nextInt(101);
-            }
-        }
-        return matrix;
-    }
-
-    public static int[][] createCustomMatrix() {
-        int[][] matrix = new int[5][];
-        matrix[4] = new int[1];
-        matrix[3] = new int[3];
-        matrix[2] = new int[3];
-        matrix[1] = new int[4];
-        matrix[0] = new int[5];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = RANDOM.nextInt(101);
-            }
-        }
-        return matrix;
-    }
 
     public static void print(int[][] matrix) {
         for (int[] ints : matrix) {
@@ -60,8 +35,8 @@ public class ArrayUtils {
     public static void swapColumns(int[][] matrix, int columA, int columB) {
         int columALength = 0;
         int columBLength = 0;
-        for (int[] ints : matrix) {
-            for (int j = 0; j < ints.length; j++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 if (j == Math.min(columA, columB)) {
                     columALength++;
                 }
@@ -80,11 +55,12 @@ public class ArrayUtils {
         }
     }
 
-    private static boolean swapColumnsPossibility(int[][] matrix, int columA, int columB, int columALength, int columBLength) {
+    private static boolean swapColumnsPossibility
+            (int[][] matrix, int columA, int columB, int columALength, int columBLength) {
         int maxRowLength = 0;
-        for (int[] ints : matrix) {
-            if (maxRowLength < ints.length) {
-                maxRowLength = ints.length - 1;
+        for (int i = 0; i < matrix.length; i++) {
+            if (maxRowLength < matrix[i].length) {
+                maxRowLength = matrix[i].length - 1;
             }
         }
         if (columA < 0 || columB < 0 || maxRowLength < columA || maxRowLength < columB) {
@@ -172,14 +148,14 @@ public class ArrayUtils {
 
     public static int[] toArray(int[][] matrix) {
         int arrayLength = 0;
-        for (int[] ints : matrix) {
-            arrayLength += ints.length;
+        for (int i = 0; i < matrix.length; i++) {
+            arrayLength += matrix[i].length;
         }
         int[] array = new int[arrayLength];
         int pointer = 0;
-        for (int[] matrixFirstIndex : matrix) {
-            for (int matrixSecondIndex : matrixFirstIndex) {
-                array[pointer] = matrixSecondIndex;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                array[pointer] = matrix[i][j];
                 pointer++;
             }
         }
@@ -188,10 +164,10 @@ public class ArrayUtils {
 
     public static int max(int[][] matrix) {
         int max = matrix[0][0];
-        for (int[] matrixFirstIndex : matrix) {
-            for (int matrixSecondIndex : matrixFirstIndex) {
-                if (matrixSecondIndex > max) {
-                    max = matrixSecondIndex;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] > max) {
+                    max = matrix[i][j];
                 }
             }
         }
