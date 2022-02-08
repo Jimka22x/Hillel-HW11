@@ -25,7 +25,7 @@ public class PersonFactory {
             "Ларионов Гелетей Корнейчук Тетерин Кондратьев Фёдоров Евсеев Самсонов Орлов Копылов Мартынов " +
             "Хитрук Селезнёв Русаков Крюков Многогрешный Линник Ермаков Ермаков Хохлов Забужко Беляков Колобов " +
             "Горобчук Андрусейко Лановой Федункив Коцюбинский Егоров ";
-    private List<Person> personList = new ArrayList<>();
+    private final List<Person> PERSON_LIST = new ArrayList<>();
 
     public PersonFactory(){
     }
@@ -33,9 +33,9 @@ public class PersonFactory {
     public List<Person> generatePersonList(int count) {
         for (int i = 0; i < count; i++) {
             Person person = createPerson();
-            personList.add(person);
+            PERSON_LIST.add(person);
         }
-        return personList;
+        return PERSON_LIST;
     }
 
     private Person createPerson() {

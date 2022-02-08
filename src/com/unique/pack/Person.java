@@ -52,4 +52,15 @@ public class Person {
     public void setHeight(double height) {
         this.height = height;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "FIRST_NAME='" + FIRST_NAME + '\'' +
+                ", LAST_NAME='" + LAST_NAME + '\'' +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", height=" + height +
+                '}';
+    }
 }
