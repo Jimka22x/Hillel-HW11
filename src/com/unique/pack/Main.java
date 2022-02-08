@@ -1,12 +1,14 @@
 package com.unique.pack;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        task2();
+        //task2();
+        task1();
     }
 
     public static void task2() {
@@ -68,5 +70,19 @@ public class Main {
                 System.out.print("Unknown answer. Please repeat: ");
             }
         }
+    }
+
+    private static void task1() {
+//        1. Создать класс Person который описывает человека, с полями: имя, фамилия, возраст, вес, рост.
+//        Создать один или несколько конструкторов которые гарантирует что у каждого есть имя и фамилия.
+//        Создать список из 100 обьектов типа Person заполненных случайными данными
+//        (Например создать массив на несколько имен и выбирать из него случайным образом).
+//        Код который создает список Person и заполняет его данными разместить в другом классе, не в Person,
+//        например в PersonFactory.
+//        Обеспечить чтобы случайные данные (вес, рост, возраст)выглядели правдоподобно:
+//        не было человека весом 3 кг и ростом 180 итд.
+        PersonFactory factory = new PersonFactory();
+        List<Person> personList = factory.generatePersonList(100);
+        System.out.println(personList);
     }
 }

@@ -145,7 +145,6 @@ public class ArrayUtils {
         }
     }
 
-
     public static int[] toArray(int[][] matrix) {
         int arrayLength = 0;
         for (int i = 0; i < matrix.length; i++) {
